@@ -4,6 +4,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'card_icon_content.dart';
 
+enum Gender {
+  male,
+  female,
+}
 const bottomContainerHeight = 80.0;
 const activeCardColor = Color(0xFF1D1E33);
 const inactiveCardColor = Color(0xFF111328);
@@ -21,17 +25,17 @@ class _UserInputPageState extends State<UserInputPage> {
   Color maleCardColor = inactiveCardColor;
   Color femaleCardColor = inactiveCardColor;
 
-  void updateColor(int gender) {
-    if (gender == 1) {
+  void updateColor(Gender selectedGender) {
+    if (selectedGender == Gender.male) {
+      femaleCardColor = inactiveCardColor;
       maleCardColor = maleCardColor == inactiveCardColor
           ? activeCardColor
           : inactiveCardColor;
-      femaleCardColor = inactiveCardColor;
-    } else if (gender == 2) {
+    } else if (selectedGender == Gender.female) {
+      maleCardColor = inactiveCardColor;
       femaleCardColor = femaleCardColor == inactiveCardColor
           ? activeCardColor
           : inactiveCardColor;
-      maleCardColor = inactiveCardColor;
     }
   }
 
@@ -50,7 +54,7 @@ class _UserInputPageState extends State<UserInputPage> {
                 child: GestureDetector(
                   onTap: () {
                     setState(() {
-                      updateColor(1);
+                      updateColor(Gender.male);
                     });
                   },
                   child: ReusableCard(
@@ -64,7 +68,7 @@ class _UserInputPageState extends State<UserInputPage> {
                 child: GestureDetector(
                   onTap: () {
                     setState(() {
-                      updateColor(2);
+                      updateColor(Gender.female);
                     });
                   },
                   child: ReusableCard(
