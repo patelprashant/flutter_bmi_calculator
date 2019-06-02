@@ -23,7 +23,7 @@ class CardIconContent extends StatelessWidget {
         ),
         Text(
           iconLabel,
-          style: labelTextStyle,
+          style: kLabelTextStyle,
         ),
       ],
     );

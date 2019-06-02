@@ -19,9 +19,10 @@ class UserInputPage extends StatefulWidget {
 }
 
 class _UserInputPageState extends State<UserInputPage> {
-  Color maleCardColor = inactiveCardColor;
-  Color femaleCardColor = inactiveCardColor;
+  Color maleCardColor = kInactiveCardColor;
+  Color femaleCardColor = kInactiveCardColor;
   Gender selectedGender;
+  int height = 180;
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +31,7 @@ class _UserInputPageState extends State<UserInputPage> {
         title: Text(widget.title),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Expanded(
               child: Row(
@@ -42,8 +44,8 @@ class _UserInputPageState extends State<UserInputPage> {
                     });
                   },
                   bgColor: selectedGender == Gender.male
-                      ? activeCardColor
-                      : inactiveCardColor,
+                      ? kActiveCardColor
+                      : kInactiveCardColor,
                   cardChild: new CardIconContent(
                       iconData: FontAwesomeIcons.mars, iconLabel: 'MALE'),
                 ),
@@ -56,8 +58,8 @@ class _UserInputPageState extends State<UserInputPage> {
                     });
                   },
                   bgColor: selectedGender == Gender.female
-                      ? activeCardColor
-                      : inactiveCardColor,
+                      ? kActiveCardColor
+                      : kInactiveCardColor,
                   cardChild: new CardIconContent(
                     iconData: FontAwesomeIcons.venus,
                     iconLabel: 'FEMALE',
@@ -68,10 +70,41 @@ class _UserInputPageState extends State<UserInputPage> {
           )),
           Expanded(
             child: ReusableCard(
-              bgColor: activeCardColor,
+              bgColor: kActiveCardColor,
               cardChild: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text('Slider here'),
+                  Text(
+                    'HEIGHT',
+                    style: kLabelTextStyle,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: <Widget>[
+                      Text(
+                        height.toString(),
+                        style: kDigitStyle,
+                      ),
+                      Text(
+                        'cm',
+                        style: kLabelTextStyle,
+                      ),
+                    ],
+                  ),
+                  Slider(
+                    value: height.toDouble(),
+                    min: kMinSliderVal,
+                    max: kMaxSliderVal,
+                    inactiveColor: Color(0xFF8D8E98),
+                    onChanged: (double newVal) {
+                      setState(() {
+                        height = newVal.round();
+                        print(newVal);
+                      });
+                    },
+                  ),
                 ],
               ),
             ),
@@ -80,18 +113,18 @@ class _UserInputPageState extends State<UserInputPage> {
               child: Row(
             children: <Widget>[
               Expanded(
-                child: ReusableCard(bgColor: activeCardColor),
+                child: ReusableCard(bgColor: kActiveCardColor),
               ),
               Expanded(
-                child: ReusableCard(bgColor: activeCardColor),
+                child: ReusableCard(bgColor: kActiveCardColor),
               ),
             ],
           )),
           Container(
-            color: bottomContainerColor,
+            color: kBottomContainerColor,
             margin: EdgeInsets.only(top: 10.0),
             width: double.infinity,
-            height: bottomContainerHeight,
+            height: kBottomContainerHeight,
           ),
         ],
       ),
