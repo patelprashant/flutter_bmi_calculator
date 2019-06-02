@@ -3,16 +3,12 @@ import 'package:flutter_bmi_calculator/reusable_card.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'card_icon_content.dart';
+import 'constants.dart';
 
 enum Gender {
   male,
   female,
 }
-
-const bottomContainerHeight = 80.0;
-const activeCardColor = Color(0xFF1D1E33);
-const inactiveCardColor = Color(0xFF111328);
-const bottomContainerColor = Color(0xFFEB1555);
 
 class UserInputPage extends StatefulWidget {
   UserInputPage({Key key, this.title}) : super(key: key);
@@ -71,7 +67,14 @@ class _UserInputPageState extends State<UserInputPage> {
             ],
           )),
           Expanded(
-            child: ReusableCard(bgColor: activeCardColor),
+            child: ReusableCard(
+              bgColor: activeCardColor,
+              cardChild: Column(
+                children: <Widget>[
+                  Text('Slider here'),
+                ],
+              ),
+            ),
           ),
           Expanded(
               child: Row(
