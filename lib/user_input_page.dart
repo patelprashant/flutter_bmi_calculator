@@ -39,36 +39,32 @@ class _UserInputPageState extends State<UserInputPage> {
               child: Row(
             children: <Widget>[
               Expanded(
-                child: GestureDetector(
-                  onTap: () {
+                child: ReusableCard(
+                  onPress: () {
                     setState(() {
                       selectedGender = Gender.male;
                     });
                   },
-                  child: ReusableCard(
-                    bgColor: selectedGender == Gender.male
-                        ? activeCardColor
-                        : inactiveCardColor,
-                    cardChild: new CardIconContent(
-                        iconData: FontAwesomeIcons.mars, iconLabel: 'MALE'),
-                  ),
+                  bgColor: selectedGender == Gender.male
+                      ? activeCardColor
+                      : inactiveCardColor,
+                  cardChild: new CardIconContent(
+                      iconData: FontAwesomeIcons.mars, iconLabel: 'MALE'),
                 ),
               ),
               Expanded(
-                child: GestureDetector(
-                  onTap: () {
+                child: ReusableCard(
+                  onPress: () {
                     setState(() {
                       selectedGender = Gender.female;
                     });
                   },
-                  child: ReusableCard(
-                    bgColor: selectedGender == Gender.female
-                        ? activeCardColor
-                        : inactiveCardColor,
-                    cardChild: new CardIconContent(
-                      iconData: FontAwesomeIcons.venus,
-                      iconLabel: 'FEMALE',
-                    ),
+                  bgColor: selectedGender == Gender.female
+                      ? activeCardColor
+                      : inactiveCardColor,
+                  cardChild: new CardIconContent(
+                    iconData: FontAwesomeIcons.venus,
+                    iconLabel: 'FEMALE',
                   ),
                 ),
               ),
