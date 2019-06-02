@@ -19,7 +19,7 @@ class CardIconContent extends StatelessWidget {
         Icon(
           iconData,
           size: 80.0,
-          color: Color(0xFF8D8E98),
+          color: Colors.white,
         ),
         SizedBox(
           height: 15.0,
