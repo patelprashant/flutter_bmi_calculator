@@ -7,6 +7,8 @@ import 'package:flutter_bmi_calculator/constants.dart';
 import 'package:flutter_bmi_calculator/screens/result_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../calculateBmi.dart';
+
 enum Gender {
   male,
   female,
@@ -200,10 +202,17 @@ class _UserInputPageState extends State<UserInputPage> {
           UserActionButton(
             buttonTitle: 'Calculate BMI',
             onTap: () {
-              print('Calculate BMI');
+//              print('Calculate BMI');
+              CalculateBmi calc = CalculateBmi(height: height, weight: weight);
 
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ResultsPage()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ResultsPage(
+                            bmiResult: calc.getMyBmi(),
+                            resultText: calc.getMyResult(),
+                            interpretation: calc.getMyInterPretation(),
+                          )));
             },
           ),
         ],
