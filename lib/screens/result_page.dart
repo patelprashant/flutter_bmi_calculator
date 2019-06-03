@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bmi_calculator/components/reusable_card.dart';
+import 'package:flutter_bmi_calculator/components/user_action_button.dart';
 import 'package:flutter_bmi_calculator/constants.dart';
 
 class ResultsPage extends StatelessWidget {
@@ -14,10 +15,13 @@ class ResultsPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Expanded(
-            child: Text(
-              'Your Result',
-              style: kTitleTextStyle,
-              textAlign: TextAlign.center,
+            child: Container(
+              alignment: Alignment.bottomCenter,
+              child: Text(
+                'Your Result',
+                style: kTitleTextStyle,
+                textAlign: TextAlign.center,
+              ),
             ),
           ),
           Expanded(
@@ -44,6 +48,12 @@ class ResultsPage extends StatelessWidget {
                 ],
               ),
             ),
+          ),
+          UserActionButton(
+            buttonTitle: 'Re-Calculate BMI',
+            onTap: () {
+              Navigator.pop(context);
+            },
           ),
         ],
       ),
