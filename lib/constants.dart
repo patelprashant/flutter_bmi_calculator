@@ -15,3 +15,24 @@ final kDigitStyle = TextStyle(
   fontSize: 50.0,
   fontWeight: FontWeight.w900,
 );
+final kLargeTextButtonStyle = TextStyle(
+  fontSize: 25.0,
+  fontWeight: FontWeight.w900,
+);
+final kTitleTextStyle = TextStyle(
+  fontSize: 50.0,
+  fontWeight: FontWeight.bold,
+);
+final kResultTextStyle = TextStyle(
+  color: Color(0xFF24D876),
+  fontSize: 25.0,
+  fontWeight: FontWeight.bold,
+);
+final kResultDigitStyle = TextStyle(
+  color: Color(0xFF24D876),
+  fontSize: 100.0,
+  fontWeight: FontWeight.bold,
+);
+final kResultBodyTextStyle = TextStyle(
+  fontSize: 25.0,
+);
