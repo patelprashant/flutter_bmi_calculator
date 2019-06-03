@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bmi_calculator/constants.dart';
 
-import 'constants.dart';
-
-class UserActionPage extends StatelessWidget {
+class UserActionButton extends StatelessWidget {
   final Function onTap;
   final String buttonTitle;
 
-  UserActionPage({this.onTap, this.buttonTitle});
+  UserActionButton({this.onTap, this.buttonTitle});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: onTap,
       child: Container(
         child: Center(
           child: Text(
