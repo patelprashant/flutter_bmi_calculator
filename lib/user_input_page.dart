@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bmi_calculator/result_page.dart';
 import 'package:flutter_bmi_calculator/reusable_card.dart';
 import 'package:flutter_bmi_calculator/round_action_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -196,11 +197,18 @@ class _UserInputPageState extends State<UserInputPage> {
               ],
             ),
           ),
-          Container(
-            color: kBottomContainerColor,
-            margin: EdgeInsets.only(top: 10.0),
-            width: double.infinity,
-            height: kBottomContainerHeight,
+          GestureDetector(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ResultsPage()));
+            },
+            child: Container(
+              child: Text('CALCULATE BMI'),
+              color: kBottomContainerColor,
+              margin: EdgeInsets.only(top: 10.0),
+              width: double.infinity,
+              height: kBottomContainerHeight,
+            ),
           ),
         ],
       ),
