@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bmi_calculator/reusable_card.dart';
+import 'package:flutter_bmi_calculator/round_action_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'card_icon_content.dart';
@@ -23,6 +24,7 @@ class _UserInputPageState extends State<UserInputPage> {
   Color femaleCardColor = kInactiveCardColor;
   Gender selectedGender;
   int height = 180;
+  int weight = 60;
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +99,7 @@ class _UserInputPageState extends State<UserInputPage> {
                     value: height.toDouble(),
                     min: kMinSliderVal,
                     max: kMaxSliderVal,
-                    inactiveColor: Color(0xFF8D8E98),
+                    inactiveColor: kMaxSliderInactiveColor,
                     onChanged: (double newVal) {
                       setState(() {
                         height = newVal.round();
@@ -110,16 +112,53 @@ class _UserInputPageState extends State<UserInputPage> {
             ),
           ),
           Expanded(
-              child: Row(
-            children: <Widget>[
-              Expanded(
-                child: ReusableCard(bgColor: kActiveCardColor),
-              ),
-              Expanded(
-                child: ReusableCard(bgColor: kActiveCardColor),
-              ),
-            ],
-          )),
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: ReusableCard(
+                    bgColor: kActiveCardColor,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          'WEIGHT',
+                          style: kLabelTextStyle,
+                        ),
+                        Text(
+                          weight.toString(),
+                          style: kDigitStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            RoundIconButton(
+                              action: () {
+                                setState(() {
+                                  weight--;
+                                });
+                              },
+                              iconData: FontAwesomeIcons.minusCircle,
+                            ),
+                            RoundIconButton(
+                              action: () {
+                                setState(() {
+                                  weight++;
+                                });
+                              },
+                              iconData: FontAwesomeIcons.plusCircle,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: ReusableCard(bgColor: kActiveCardColor),
+                ),
+              ],
+            ),
+          ),
           Container(
             color: kBottomContainerColor,
             margin: EdgeInsets.only(top: 10.0),

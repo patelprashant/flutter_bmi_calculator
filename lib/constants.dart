@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 const kMinSliderVal = 120.0;
 const kMaxSliderVal = 220.0;
+const kMaxSliderInactiveColor = Color(0xFF8D8E98);
 const kBottomContainerHeight = 80.0;
 const kActiveCardColor = Color(0xFF1D1E33);
 const kInactiveCardColor = Color(0xFF111328);
